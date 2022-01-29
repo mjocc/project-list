@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <link rel="icon" type="image/svg+xml" href="/info.svg" />
       </Head>
-      <Container className="mt-5 px-5">
+      <Container className="mt-5 px-md-5 px-sm-3">
         <Component {...pageProps} />
       </Container>
     </>
