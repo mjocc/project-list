@@ -1,0 +1,8 @@
+- icon: activity
+  text: Test project
+  url: https://google.com/
+  ghName: spacetraders-client
+- icon: archive
+  text: Test project 2
+  url: https://duck.com/
+  ghName: quiz-app
