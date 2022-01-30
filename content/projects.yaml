@@ -1,28 +1,29 @@
-- icon: circle
+# for iconSource and icon information: https://icongr.am/
+- icon: gulp-plain
   text: Old personal website
   url: mjocc.dev
   ghName: personal-website
-- icon: circle
+- icon: react-original
   text: New personal website
   url: next.mjocc.dev
   ghName: personal-website-next
-- icon: circle
+- icon: vuejs-original
   text: Flight plan manager
   url: flightplans.mjocc.dev
   ghName: gcse-programmming-project-vue
-- icon: help-circle
+- icon: vuejs-original
   text: Quiz app
   url: quiz-app.mjocc.dev
   ghName: quiz-app
-- icon: help-circle
+- icon: ionic-original
   text: Mobile quiz app
   url: m.quiz-app.mjocc.dev
   ghName: quiz-mobile-app
-- icon: circle
+- icon: react-original
   text: Projects list
   url: \#
   ghName: project-list
-- icon: star
+- icon: react-original
   text: Spacetraders client
   url: spacetraders.mjocc.dev
   ghName: spacetraders-client
