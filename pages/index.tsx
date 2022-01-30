@@ -21,7 +21,7 @@ interface ListItemProps extends Project {}
 const ListItem: FC<ListItemProps> = ({ icon, text, url, ghName }) => {
   return (
     <ListGroup horizontal>
-        <ListGroup.Item action href={url} className="d-flex align-items-center">
+        <ListGroup.Item action href={`https://${url}`} className="d-flex align-items-center">
           <Image
             src={`https://icongr.am/feather/${icon}.svg?size=24&color=ffffff`}
             width={24}
@@ -50,7 +50,7 @@ const Home: NextPage<{ projects: Project[] }> = ({ projects }) => {
   return (
     <>
       <Head>
-        <title>Projects directory | mjocc</title>
+        <title>Projects list | mjocc</title>
       </Head>
       <Stack direction="horizontal" className="mb-3">
         <h1 className="display-1">Projects</h1>

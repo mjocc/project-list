@@ -1,8 +1,28 @@
-- icon: activity
-  text: Test project
-  url: https://google.com/
-  ghName: spacetraders-client
-- icon: archive
-  text: Test project 2
-  url: https://duck.com/
+- icon: circle
+  text: Old personal website
+  url: mjocc.dev
+  ghName: personal-website
+- icon: circle
+  text: New personal website
+  url: next.mjocc.dev
+  ghName: personal-website-next
+- icon: circle
+  text: Flight plan manager
+  url: flightplans.mjocc.dev
+  ghName: gcse-programmming-project-vue
+- icon: help-circle
+  text: Quiz app
+  url: quiz-app.mjocc.dev
   ghName: quiz-app
+- icon: help-circle
+  text: Mobile quiz app
+  url: m.quiz-app.mjocc.dev
+  ghName: quiz-mobile-app
+- icon: circle
+  text: Projects list
+  url: \#
+  ghName: project-list
+- icon: star
+  text: Spacetraders client
+  url: spacetraders.mjocc.dev
+  ghName: spacetraders-client
