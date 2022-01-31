@@ -1,11 +1,11 @@
 # for iconSource and icon information: https://icongr.am/
 - icon: gulp-plain
   text: Old personal website
-  url: mjocc.dev
+  url: old.mjocc.dev
   ghName: personal-website
 - icon: react-original
-  text: New personal website
-  url: next.mjocc.dev
+  text: Personal website
+  url: mjocc.dev
   ghName: personal-website-next
 - icon: vuejs-original
   text: Flight plan manager
