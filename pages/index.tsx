@@ -4,25 +4,43 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { join } from 'path';
 import { cwd } from 'process';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { ListGroup, Stack } from 'react-bootstrap';
 import { GitHub } from 'react-feather';
 import YAML from 'yaml';
+import { RequireExactlyOne } from 'type-fest';
+import Toast from '../components/Toast';
 
-interface Project {
-  iconSource?: string;
-  icon: string;
-  text: string;
-  url: string;
-  ghName: string;
-}
+type Project = RequireExactlyOne<
+  {
+    iconSource?: string;
+    icon: string;
+    text: string;
+    url: string;
+    toast: string;
+    ghName: string;
+  },
+  'url' | 'toast'
+>;
 
-interface ListItemProps extends Project {}
-
-const ListItem: FC<ListItemProps> = ({ iconSource = 'devicon', icon, text, url, ghName }) => {
+const ListItem: FC<Project> = ({
+  iconSource = 'devicon',
+  icon,
+  text,
+  url,
+  toast,
+  ghName,
+}) => {
+  const [show, setShow] = useState<boolean>(false);
   return (
-    <ListGroup horizontal>
-        <ListGroup.Item action href={`https://${url}`} className="d-flex align-items-center">
+    <>
+      <ListGroup horizontal>
+        <ListGroup.Item
+          action
+          href={url ? `https://${url}` : undefined}
+          onClick={toast ? () => setShow(true) : undefined}
+          className="d-flex align-items-center"
+        >
           <Image
             src={`https://icongr.am/${iconSource}/${icon}.svg?size=24&color=ffffff`}
             width={24}
@@ -31,10 +49,16 @@ const ListItem: FC<ListItemProps> = ({ iconSource = 'devicon', icon, text, url, 
           />
           <span className="ms-3">{text}</span>
         </ListGroup.Item>
-        <ListGroup.Item action href={`https://github.com/mjocc/${ghName}/`} style={{ flex: 1 }}>
+        <ListGroup.Item
+          action
+          href={`https://github.com/mjocc/${ghName}/`}
+          style={{ flex: 1 }}
+        >
           <GitHub className="ms-auto" />
         </ListGroup.Item>
-    </ListGroup>
+      </ListGroup>
+      {toast && <Toast text={toast} show={show} setShow={setShow} />}
+    </>
   );
 };
 
@@ -60,15 +84,8 @@ const Home: NextPage<{ projects: Project[] }> = ({ projects }) => {
         </a>
       </Stack>
       <Stack className="inter-regular">
-        {projects.map(({ iconSource, icon, text, url, ghName }) => (
-          <ListItem
-            key={ghName}
-            iconSource={iconSource}
-            icon={icon}
-            text={text}
-            url={url}
-            ghName={ghName}
-          />
+        {projects.map((project) => (
+          <ListItem key={project.text + project.ghName} {...project} />
         ))}
       </Stack>
     </>

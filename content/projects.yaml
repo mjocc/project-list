@@ -21,7 +21,7 @@
   ghName: quiz-mobile-app
 - icon: react-original
   text: Projects list
-  url: \#
+  toast: You are already on this site!
   ghName: project-list
 - icon: react-original
   text: Spacetraders client
