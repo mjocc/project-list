@@ -4,7 +4,7 @@ interface BackgroundProps {}
 
 const Background: FC<BackgroundProps> = () => {
   return (
-    <div className="lines">
+    <div style={{ zIndex: -10 }} className="lines">
       <div className="line" />
       <div className="line" />
       <div className="line" />
