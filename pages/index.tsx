@@ -1,10 +1,9 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import { FC, useState, useEffect } from 'react';
+import { FC, useState } from 'react';
 import { ListGroup, Stack } from 'react-bootstrap';
 import { GitHub } from 'react-feather';
-import { z } from 'zod';
 import Toast from '../components/Toast';
 import projects from '../content/projects';
 

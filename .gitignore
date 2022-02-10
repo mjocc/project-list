@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# prevent accidental use of npm instead of yarn
+package-lock.json
+
 # testing
 /coverage
 
