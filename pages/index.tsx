@@ -1,37 +1,41 @@
-import { readFile } from 'fs/promises';
-import type { GetStaticProps, NextPage } from 'next';
+import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import { join } from 'path';
-import { cwd } from 'process';
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { ListGroup, Stack } from 'react-bootstrap';
 import { GitHub } from 'react-feather';
-import YAML from 'yaml';
-import { RequireExactlyOne } from 'type-fest';
+import { z } from 'zod';
 import Toast from '../components/Toast';
+import projects from '../content/projects';
 
-type Project = RequireExactlyOne<
-  {
-    iconSource?: string;
-    icon: string;
-    text: string;
-    url: string;
-    toast: string;
-    ghName: string;
-  },
-  'url' | 'toast'
->;
+export type Project = {
+  text: string;
+  ghName?: string;
+} & (
+  | {
+      icon: string;
+      iconUrl?: undefined;
+      iconSource?: string;
+    }
+  | {
+      icon?: undefined;
+      iconUrl: string;
+      iconSource?: undefined;
+    }
+) &
+  ({ toast: string; url?: undefined } | { toast?: undefined; url: string });
 
 const ListItem: FC<Project> = ({
   iconSource = 'devicon',
   icon,
+  iconUrl,
   text,
   url,
   toast,
   ghName,
 }) => {
   const [show, setShow] = useState<boolean>(false);
+
   return (
     <>
       <ListGroup horizontal>
@@ -41,18 +45,25 @@ const ListItem: FC<Project> = ({
           onClick={toast ? () => setShow(true) : undefined}
           className="d-flex align-items-center"
         >
-          <Image
-            src={`https://icongr.am/${iconSource}/${icon}.svg?size=24&color=ffffff`}
-            width={24}
-            height={24}
-            alt={icon}
-          />
-          <span className="ms-3">{text}</span>
+          <>
+            <Image
+              src={
+                iconUrl
+                  ? iconUrl
+                  : `https://icongr.am/${iconSource}/${icon}.svg?size=24&color=ffffff`
+              }
+              width={24}
+              height={24}
+              alt={icon}
+            />
+            <span className="ms-3">{text}</span>
+          </>
         </ListGroup.Item>
         <ListGroup.Item
           action
-          href={`https://github.com/mjocc/${ghName}/`}
+          href={ghName ? `https://github.com/mjocc/${ghName}/` : undefined}
           style={{ flex: 1 }}
+          disabled={!ghName}
         >
           <GitHub className="ms-auto" />
         </ListGroup.Item>
@@ -62,16 +73,7 @@ const ListItem: FC<Project> = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const path = join(cwd(), 'content/projects.yaml');
-  const fileContents = await readFile(path, 'utf-8');
-  const projects: Project[] = YAML.parse(fileContents);
-  return {
-    props: { projects },
-  };
-};
-
-const Home: NextPage<{ projects: Project[] }> = ({ projects }) => {
+const Home: NextPage<{ projects: Project[] }> = () => {
   return (
     <>
       <Head>
