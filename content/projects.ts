@@ -1,6 +1,7 @@
 import type { Project } from '../pages';
 
 //! MAKE SURE TO ADD ICON URL DOMAIN TO NEXT.CONFIG.JS
+//? See https://icongr.am for 'icon' and 'iconSource' information
 
 const projects: Project[] = [
   {
@@ -49,6 +50,13 @@ const projects: Project[] = [
     text: 'Spacetraders client',
     url: 'spacetraders.mjocc.dev',
     ghName: 'spacetraders-client',
+  },
+  {
+    iconUrl:
+      'https://raw.githubusercontent.com/sveltejs/branding/master/svelte-logo.svg',
+    text: 'Minesweeper',
+    url: 'minesweeper.mjocc.dev',
+    ghName: 'svelte-minesweeper',
   },
 ];
 
