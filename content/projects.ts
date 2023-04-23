@@ -48,14 +48,14 @@ const projects: Project[] = [
   {
     icon: 'react-original',
     text: 'Spacetraders client',
-    url: 'spacetraders.mjocc.dev',
+    url: 'spacetraders-client.vercel.app',
     ghName: 'spacetraders-client',
   },
   {
     iconUrl:
       'https://raw.githubusercontent.com/sveltejs/branding/master/svelte-logo.svg',
     text: 'Minesweeper',
-    url: 'minesweeper.mjocc.dev',
+    url: 'svelte-minesweeper-mjocc.vercel.app',
     ghName: 'svelte-minesweeper',
   },
 ];
